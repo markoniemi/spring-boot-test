@@ -1,0 +1,22 @@
+package org.survey.config;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
+import org.survey.Person;
+import org.survey.PersonRepository;
+
+import lombok.extern.log4j.Log4j2;
+@Component
+@Log4j2
+public class DatabaseInitBean implements InitializingBean{
+    @Resource
+    private PersonRepository personRepository;
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        log.debug("afterPropertiesSet");
+        personRepository.save(new Person("email", "firstName", "lastName"));
+    }
+}
