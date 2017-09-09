@@ -14,8 +14,8 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.http.MediaType;
-import org.survey.PeopleRestService;
-import org.survey.PersonRestService;
+import org.survey.service.PeopleRestService;
+import org.survey.service.PersonRestService;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 

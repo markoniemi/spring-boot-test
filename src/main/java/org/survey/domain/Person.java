@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

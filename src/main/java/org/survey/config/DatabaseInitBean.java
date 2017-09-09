@@ -4,8 +4,8 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
-import org.survey.Person;
-import org.survey.PersonRepository;
+import org.survey.domain.Person;
+import org.survey.repository.PersonRepository;
 
 import lombok.extern.log4j.Log4j2;
 @Component

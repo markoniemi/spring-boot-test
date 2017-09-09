@@ -4,6 +4,6 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
 	<persistence-unit name="survey-repository" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>org.survey.Person</class>
+		<class>org.survey.domain.Person</class>
 	</persistence-unit>
 </persistence>

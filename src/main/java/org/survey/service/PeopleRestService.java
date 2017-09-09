@@ -1,4 +1,4 @@
-package org.survey;
+package org.survey.service;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.survey.domain.Person;
 
 @RestController
 @Path("/people")
