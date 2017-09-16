@@ -3,6 +3,7 @@ package org.survey.config;
 import java.util.Properties;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -17,7 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-//@EnableTransactionManagement
+////@EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "org.survey")
 @EntityScan(basePackages = "org.survey")
 public class JpaConfig {
@@ -39,7 +40,8 @@ public class JpaConfig {
 
     @Bean
     public EntityManager entityManager() {
-        return entityManagerFactory().getObject().createEntityManager();
+        EntityManagerFactory entityManagerFactory = entityManagerFactory().getObject();
+        return entityManagerFactory.createEntityManager();
     }
 
     @Bean
