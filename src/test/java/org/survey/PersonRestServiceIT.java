@@ -1,8 +1,9 @@
 package org.survey;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,27 +22,32 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper.DefaultTypeResolverBuilder;
 
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
-@Log4j2
-public class PersonRestServiceTest {
-    TestRestTemplate testRestTemplate = new TestRestTemplate();
+@Slf4j
+public class PersonRestServiceIT {
+    private TestRestTemplate testRestTemplate = new TestRestTemplate();
+    @Resource
+    private String url;
 
     @Test
-    public void get() throws JsonParseException, JsonMappingException, IOException {
-        String url = "http://localhost:8080/api/persons";
-        ResponseEntity<String> responseString = testRestTemplate.getForEntity(url, String.class);
+    public void getPersons() throws JsonParseException, JsonMappingException, IOException {
+        ResponseEntity<String> responseString = testRestTemplate.getForEntity(url + "/api/persons", String.class);
         Assert.assertNotNull(responseString);
-        log.debug("response: {}", responseString.getBody());
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<Person> persons = objectMapper.readValue(responseString.getBody(), new TypeReference<List<Person>>() {
-        });
-        log.debug("persons: {}", Arrays.toString(persons.toArray()));
+        List<Person> persons = parseResponse(responseString);
         Assert.assertNotNull(persons);
         Assert.assertEquals(1, persons.size());
+    }
+
+    private List<Person> parseResponse(ResponseEntity<String> responseString)
+            throws IOException, JsonParseException, JsonMappingException {
+        return new ObjectMapper().readValue(responseString.getBody(), new TypeReference<List<Person>>() {
+        });
     }
 }
