@@ -1,7 +1,6 @@
 package org.survey;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.survey.config.ApplicationConfig;
 
 //@SpringBootApplication
