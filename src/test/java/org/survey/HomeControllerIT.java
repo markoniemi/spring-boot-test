@@ -30,13 +30,7 @@ public class HomeControllerIT {
     public void home() {
         ResponseEntity<String> entity = testRestTemplate.getForEntity(url, String.class);
         Assert.assertEquals(HttpStatus.OK, entity.getStatusCode());
-        Assert.assertTrue(entity.getBody().contains("Hello World"));
-    }
-
-    @Test
-    public void index() {
-        ResponseEntity<String> entity = testRestTemplate.getForEntity(url + "/index", String.class);
-        Assert.assertEquals(HttpStatus.OK, entity.getStatusCode());
-        Assert.assertTrue(entity.getBody().contains("index"));
+        // should redirect to users page
+        Assert.assertTrue(entity.getBody().contains("<td id=\"username\">username</td>"));
     }
 }
