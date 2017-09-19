@@ -14,8 +14,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.http.MediaType;
-import org.survey.service.PeopleRestService;
-import org.survey.service.PersonRestService;
+import org.survey.service.user.UserService;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
@@ -23,9 +22,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 //@RestControllerAdvice(basePackages="org.survey")
 public class RestConfig {
     @Resource
-    private PersonRestService personRestService;
-    @Resource
-    private PeopleRestService peopleRestService;
+    private UserService userService;
 
     @Bean
     public RepositoryRestConfigurer repositoryRestConfigurer() {
@@ -48,7 +45,7 @@ public class RestConfig {
     @DependsOn("cxf")
     public Server jaxRsServer() {
         final JAXRSServerFactoryBean factory = new JAXRSServerFactoryBean();
-        factory.setServiceBeanObjects(peopleRestService, personRestService);
+        factory.setServiceBeanObjects(userService);
         factory.setProvider(new JacksonJsonProvider());
         factory.setBus(cxf());
         // factory.setAddress("/");
