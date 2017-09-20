@@ -1,8 +1,9 @@
 package org.survey.controller.user;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -16,7 +17,6 @@ import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
 
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,8 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
     @Autowired
     private MessageSource messageSource;
-    @Autowired
-    // @Qualifier("userServiceBean")
+    @Resource
     private UserService userService;
 
     @RequestMapping(value = "/user/save", method = RequestMethod.POST)

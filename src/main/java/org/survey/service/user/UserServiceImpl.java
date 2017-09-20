@@ -7,6 +7,7 @@ import javax.jws.WebService;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.lang3.Validate;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  * adds proper names to parameters in WSDL. endpointInterface and serviceName
  * are probably unneccessary.
  */
+@Primary
 @Service
 @Slf4j
 @WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
