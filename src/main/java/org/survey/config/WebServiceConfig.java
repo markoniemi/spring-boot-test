@@ -19,8 +19,8 @@ public class WebServiceConfig {
     @Bean
     public Endpoint endpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, userService);
-        endpoint.setAddress("/soap/users");
-        endpoint.publish("/soap/users");
+        endpoint.setAddress("/soap");
+        endpoint.publish("/soap");
         return endpoint;
     }
 }

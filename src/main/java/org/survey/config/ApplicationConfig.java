@@ -15,7 +15,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Configuration
 @ComponentScan(basePackages = "org.survey")
 @EntityScan(basePackages = "org.survey.model")
-@Import({ JpaConfig.class, TomcatConfig.class, WebMvcConfig.class, RestConfig.class })
+@Import({ JpaConfig.class, TomcatConfig.class, WebMvcConfig.class, RestConfig.class, WebServiceConfig.class })
 public class ApplicationConfig {
     @Bean
     public LocaleResolver localeResolver() {

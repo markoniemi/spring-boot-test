@@ -48,7 +48,7 @@ public class RestConfig {
         factory.setServiceBeanObjects(userService);
         factory.setProvider(new JacksonJsonProvider());
         factory.setBus(cxf());
-        // factory.setAddress("/");
+         factory.setAddress("/rest");
         return factory.create();
     }
 
