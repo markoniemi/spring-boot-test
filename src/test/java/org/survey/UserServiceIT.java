@@ -43,19 +43,10 @@ public class UserServiceIT {
     private String url;
     @Resource(name = "usersProxy")
     UserService userService;
-//    @Before
-//    public void setUp() {
-//        JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
-//        jaxWsProxyFactoryBean.setServiceClass(UserService.class);
-//        jaxWsProxyFactoryBean.setAddress(url + "/api/soap/users");
-//
-//        userService = (UserService) jaxWsProxyFactoryBean.create();
-//        
-//    }
 
     @Test
     public void getPersons() throws JsonParseException, JsonMappingException, IOException {
-        ResponseEntity<String> responseString = testRestTemplate.getForEntity(url + "/api/users", String.class);
+        ResponseEntity<String> responseString = testRestTemplate.getForEntity(url + "/api/rest/users", String.class);
         Assert.assertNotNull(responseString);
         List<User> users = parseResponse(responseString);
         Assert.assertNotNull(users);
