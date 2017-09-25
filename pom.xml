@@ -39,16 +39,16 @@
 			<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
 			<version>${org.apache.cxf.version}</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.cxf</groupId> -->
-<!-- 			<artifactId>cxf-rt-frontend-jaxws</artifactId> -->
-<!-- 			<version>${org.apache.cxf.version}</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.cxf</groupId> -->
-<!-- 			<artifactId>cxf-rt-transports-http</artifactId> -->
-<!-- 			<version>${org.apache.cxf.version}</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.cxf</groupId> -->
+		<!-- <artifactId>cxf-rt-frontend-jaxws</artifactId> -->
+		<!-- <version>${org.apache.cxf.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.cxf</groupId> -->
+		<!-- <artifactId>cxf-rt-transports-http</artifactId> -->
+		<!-- <version>${org.apache.cxf.version}</version> -->
+		<!-- </dependency> -->
 		<!-- <dependency> -->
 		<!-- <groupId>org.apache.cxf</groupId> -->
 		<!-- <artifactId>cxf-rt-databinding-jaxb</artifactId> -->
@@ -62,10 +62,19 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
 		<!-- <dependency> -->
 		<!-- <groupId>org.springframework.boot</groupId> -->
 		<!-- <artifactId>spring-boot-devtools</artifactId> -->
 		<!-- <optional>true</optional> -->
+		<!-- <scope>runtime</scope> -->
 		<!-- </dependency> -->
 		<!-- <dependency> -->
 		<!-- <groupId>com.h2database</groupId> -->

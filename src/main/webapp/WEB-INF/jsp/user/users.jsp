@@ -6,13 +6,13 @@
 <head>
 <title><spring:message code="users" /></title>
 <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
-<%-- <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" /> --%>
+<link href="<c:url value="/css/style.css" />" rel="stylesheet" />
 </head>
 <body>
     <script type="text/javascript" src="/webjars/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <div class="content">
-<%--         <c:import url="/WEB-INF/pages/common/menu.jsp"></c:import> --%>
+        <c:import url="/WEB-INF/jsp/common/menu.jsp"></c:import>
 
         <table class="table table-striped">
             <thead>
@@ -46,6 +46,6 @@
             <input id="addUser" class="btn btn-primary" type="submit" value="<spring:message code="addUser"/>" />
         </form:form>
     </div>
-<%--     <c:import url="/WEB-INF/pages/common/footer.jsp"></c:import> --%>
+    <c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
 </body>
 </html>
