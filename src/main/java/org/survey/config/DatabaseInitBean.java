@@ -19,6 +19,6 @@ public class DatabaseInitBean implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         log.debug("afterPropertiesSet");
-        userRepository.save(new User("username", "password", "email", Role.ROLE_ADMIN));
+        userRepository.save(new User("admin", "admin", "email", Role.ROLE_ADMIN));
     }
 }

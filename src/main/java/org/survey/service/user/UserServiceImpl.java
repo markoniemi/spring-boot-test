@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
         }
 //        List<File> files = fileRepository.findAllByOwner(user);
 //        fileRepository.delete(files);
-//        userRepository.delete(user.getId());
+        userRepository.delete(user.getId());
     }
 
     @Override

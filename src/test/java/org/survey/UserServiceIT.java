@@ -35,7 +35,6 @@ import lombok.extern.slf4j.Slf4j;
 @ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
 @Slf4j
 // TODO
-// https://www.javacodegeeks.com/2015/03/spring-boot-integration-testing-with-selenium.html
 // https://www.codenotfound.com/apache-cxf-spring-boot-soap-web-service-client-server-example.html
 public class UserServiceIT {
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
