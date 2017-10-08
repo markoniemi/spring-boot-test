@@ -157,9 +157,9 @@
         </dependency>
         <!-- selenium-test-rule -->
         <dependency>
-            <groupId>org.selenium</groupId>
+            <groupId>com.github.niemimac</groupId>
             <artifactId>selenium-test-rule</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>master-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <!-- Selenium -->
@@ -181,6 +181,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -203,10 +209,10 @@
                     </execution>
                 </executions>
                 <!--<configuration>-->
-                    <!--<systemPropertyVariables>-->
-                        <!--<http.port>${http.port}</http.port>-->
-                        <!--<http.protocol>${http.protocol}</http.protocol>-->
-                    <!--</systemPropertyVariables>-->
+                <!--<systemPropertyVariables>-->
+                <!--<http.port>${http.port}</http.port>-->
+                <!--<http.protocol>${http.protocol}</http.protocol>-->
+                <!--</systemPropertyVariables>-->
                 <!--</configuration>-->
             </plugin>
         </plugins>
