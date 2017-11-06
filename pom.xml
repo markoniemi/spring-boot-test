@@ -107,18 +107,6 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <!--<scope>provided</scope>-->
         </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.jetty</groupId> -->
-        <!-- <artifactId>jetty-server</artifactId> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.jetty</groupId> -->
-        <!-- <artifactId>jetty-plus</artifactId> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.jetty</groupId> -->
-        <!-- <artifactId>jetty-webapp</artifactId> -->
-        <!-- </dependency> -->
         <!-- Bootstrap -->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -157,27 +145,9 @@
         </dependency>
         <!-- selenium-test-rule -->
         <dependency>
-            <groupId>org.selenium</groupId>
+            <groupId>org.markoniemi</groupId>
             <artifactId>selenium-test-rule</artifactId>
-            <version>0.3</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Selenium -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.detro</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.2.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>${selenium.version}</version>
+            <version>0.5</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
