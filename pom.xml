@@ -148,14 +148,14 @@
         <dependency>
             <groupId>org.markoniemi</groupId>
             <artifactId>selenium-test-rule</artifactId>
-            <version>0.5</version>
+            <version>0.6-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
     <repositories>
         <repository>
-            <id>bintray-markoniemi-maven-repo</id>
-            <url>https://dl.bintray.com/markoniemi/maven-repo</url>
+            <id>markoniemi-maven-repo</id>
+            <url>https://packagecloud.io/markoniemi/maven-repo/maven2</url>
         </repository>
     </repositories>
     <build>
