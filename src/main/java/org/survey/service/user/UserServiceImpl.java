@@ -43,10 +43,10 @@ public class UserServiceImpl implements UserService {
     @Override
 //    @Transactional(readOnly=false)
     public User create(User user) {
-        Validate.notNull(user, "Tried to create null user.");
-        Validate.notBlank(user.getUsername(), "Username must not be blank.");
-        Validate.isTrue(userRepository.findByUsername(user.getUsername()) == null, "User already exists: %s",
-                user.getUsername());
+        Validate.notNull(user, "invalid.user");
+        Validate.notBlank(user.getUsername(), "invalid.user.username");
+        Validate.isTrue(userRepository.findByUsername(user.getUsername()) == null, "exist.user.username"
+                );
         log.trace("create: {}", user);
         return userRepository.save(user);
     }

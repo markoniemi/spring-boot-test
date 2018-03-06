@@ -148,7 +148,7 @@
         <dependency>
             <groupId>org.markoniemi</groupId>
             <artifactId>selenium-test-rule</artifactId>
-            <version>0.6-SNAPSHOT</version>
+            <version>0.6</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

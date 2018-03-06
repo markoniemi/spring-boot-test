@@ -26,7 +26,7 @@ import java.util.List;
 @Slf4j
 public class AppIT {
     private static final int SLEEP_TIME = 1000;
-    @PhantomJsDriver(version="1.9.7")
+    @PhantomJsDriver(version="2.1.1")
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();
@@ -41,7 +41,7 @@ public class AppIT {
     public void setUp() {
         httpPort = System.getProperty("http.port", "8082");
         httpProtocol = System.getProperty("http.protocol", "http");
-        serverURL = httpProtocol + "://localhost:" + httpPort;
+        serverURL = httpProtocol + "://localhost:" + httpPort+"/survey-spring-web";
     }
 
     @After

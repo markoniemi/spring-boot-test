@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,6 +43,7 @@ public class UserServiceIT {
     UserService userService;
 
     @Test
+    // TODO get ServiceRestTestConfig from survey/survey-backend
     public void getPersons() throws JsonParseException, JsonMappingException, IOException {
         ResponseEntity<String> responseString = testRestTemplate.getForEntity(url + "/api/rest/users", String.class);
         Assert.assertNotNull(responseString);

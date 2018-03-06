@@ -125,7 +125,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.skyscreamer:jsonassert:1.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.3.10.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.markoniemi:selenium-test-rule:0.6-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.markoniemi:selenium-test-rule:0.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-java:3.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-api:3.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:3.4.0" level="project" />
