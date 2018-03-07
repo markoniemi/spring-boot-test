@@ -29,6 +29,7 @@ public class ApplicationConfig {
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasenames("messages");
+        source.setFallbackToSystemLocale(false);
         source.setUseCodeAsDefaultMessage(true);
         return source;
     }
