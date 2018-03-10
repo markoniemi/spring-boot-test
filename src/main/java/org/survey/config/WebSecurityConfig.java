@@ -16,13 +16,16 @@ import javax.annotation.Resource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     UserRepositoryAuthenticationProvider userRepositoryAuthenticationProvider;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.formLogin().loginPage("/login").loginProcessingUrl("/j_spring_security_check")
-                .usernameParameter("j_username").passwordParameter("j_password").failureUrl("/login?loginError=true").permitAll();
+                .defaultSuccessUrl("/user/users").usernameParameter("j_username").passwordParameter("j_password")
+                .failureUrl("/login?error=true").permitAll();
         http.logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/login").permitAll();
-        http.authorizeRequests().antMatchers("/", "/home", "/api/**", "/static/**", "/webjars/**").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/", "/home", "/api/**", "/static/**", "/webjars/**").permitAll()
+                .anyRequest().authenticated();
     }
 
     @Autowired
