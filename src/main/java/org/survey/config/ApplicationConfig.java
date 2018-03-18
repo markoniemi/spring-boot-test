@@ -27,15 +27,6 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public ResourceBundleMessageSource messageSource() {
-        ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-        source.setBasenames("messages");
-        source.setFallbackToSystemLocale(false);
-        source.setUseCodeAsDefaultMessage(true);
-        return source;
-    }
-
-    @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
