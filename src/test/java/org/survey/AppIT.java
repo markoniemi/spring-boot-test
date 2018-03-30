@@ -1,14 +1,21 @@
 package org.survey;
 
-import lombok.extern.slf4j.Slf4j;
-import org.junit.*;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.selenium.SeleniumTestRule;
-import org.selenium.annotation.PhantomJsDriver;
+import org.selenium.annotation.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
@@ -17,8 +24,7 @@ import org.survey.config.ApplicationConfig;
 import org.survey.model.user.Role;
 import org.survey.service.user.UserService;
 
-import javax.annotation.Resource;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -26,7 +32,7 @@ import java.util.List;
 @Slf4j
 public class AppIT {
     private static final int SLEEP_TIME = 1000;
-    @PhantomJsDriver(version="2.1.1")
+    @ChromeDriver(headless=true)
     public WebDriver webDriver;
     @Rule
     public SeleniumTestRule seleniumTestRule = new SeleniumTestRule();
