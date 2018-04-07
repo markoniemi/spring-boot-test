@@ -31,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 @ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
 @Slf4j
 public class AppIT {
-    private static final int SLEEP_TIME = 1000;
+    private static final int SLEEP_TIME = 100;
     @ChromeDriver(headless=true)
     public WebDriver webDriver;
     @Rule
