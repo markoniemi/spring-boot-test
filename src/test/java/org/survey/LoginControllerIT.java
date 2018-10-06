@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,12 +24,12 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.survey.config.ApplicationConfig;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
-@Slf4j
+@Log4j2
 public class LoginControllerIT {
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
     @Resource
@@ -41,7 +40,7 @@ public class LoginControllerIT {
         HttpHeaders headers = createHeaders();
         MultiValueMap<String, String> body = createBody("admin", "admin");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
-                HttpMethod.POST, new HttpEntity<>(body,headers), String.class);
+                HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
         Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
         List<String> cookies = entity.getHeaders().get("Set-Cookie");
         Assert.assertTrue(cookies.toString().contains("JSESSIONID"));
@@ -56,12 +55,13 @@ public class LoginControllerIT {
         Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
         Assert.assertEquals(url + "/login", entity.getHeaders().getLocation().toString());
     }
+
     @Test
     public void failedLogin() throws Exception {
         HttpHeaders headers = createHeaders();
         MultiValueMap<String, String> body = createBody("admin", "wrong");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
-                HttpMethod.POST, new HttpEntity<>(body,headers), String.class);
+                HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
         Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
         Assert.assertEquals(url + "/login?error=true", entity.getHeaders().getLocation().toString());
     }
@@ -72,7 +72,7 @@ public class LoginControllerIT {
         form.set("j_password", password);
         return form;
     }
-    
+
     private HttpHeaders createHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.TEXT_HTML));

@@ -19,7 +19,7 @@ import org.survey.service.user.UserService;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 @Configuration
-//@RestControllerAdvice(basePackages="org.survey")
+// @RestControllerAdvice(basePackages="org.survey")
 public class RestConfig {
     @Resource
     private UserService userService;
@@ -48,7 +48,7 @@ public class RestConfig {
         factory.setServiceBeanObjects(userService);
         factory.setProvider(new JacksonJsonProvider());
         factory.setBus(cxf());
-         factory.setAddress("/rest");
+        factory.setAddress("/rest");
         return factory.create();
     }
 

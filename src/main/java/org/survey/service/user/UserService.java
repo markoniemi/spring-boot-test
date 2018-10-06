@@ -15,10 +15,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.survey.model.user.User;
+
 @RestController
 @WebService
-//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Produces({MediaType.APPLICATION_JSON})
+// @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Produces({ MediaType.APPLICATION_JSON })
 @Path("/users")
 public interface UserService {
     /**

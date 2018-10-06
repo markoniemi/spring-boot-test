@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * WebService implementation of UserService. Can not use delegate design
@@ -25,15 +25,15 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Primary
 @Service
-@Slf4j
+@Log4j2
 @WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
 public class UserServiceImpl implements UserService {
     @Resource
-//    @Autowired
+    // @Autowired
     private UserRepository userRepository;
-//    @Resource
-//    private FileRepository fileRepository;
-    
+    // @Resource
+    // private FileRepository fileRepository;
+
     @Override
     public List<User> findAll() {
         log.trace("findAll");
@@ -41,12 +41,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-//    @Transactional(readOnly=false)
+    // @Transactional(readOnly=false)
     public User create(User user) {
         Validate.notNull(user, "invalid.user");
         Validate.notBlank(user.getUsername(), "invalid.user.username");
-        Validate.isTrue(userRepository.findByUsername(user.getUsername()) == null, "exist.user.username"
-                );
+        Validate.isTrue(userRepository.findByUsername(user.getUsername()) == null, "exist.user.username");
         log.trace("create: {}", user);
         return userRepository.save(user);
     }
@@ -89,8 +88,8 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return;
         }
-//        List<File> files = fileRepository.findAllByOwner(user);
-//        fileRepository.delete(files);
+        // List<File> files = fileRepository.findAllByOwner(user);
+        // fileRepository.delete(files);
         userRepository.deleteById(user.getId());
     }
 

@@ -12,6 +12,7 @@ import org.survey.service.user.UserService;
 public class UsersController {
     @Resource
     private UserService userService;
+
     @RequestMapping(value = "/user/users", method = RequestMethod.GET)
     public ModelAndView users() {
         ModelAndView model = new ModelAndView();

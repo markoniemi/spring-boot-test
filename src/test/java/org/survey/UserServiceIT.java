@@ -27,12 +27,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
-@Slf4j
+@Log4j2
 // TODO
 // https://www.codenotfound.com/apache-cxf-spring-boot-soap-web-service-client-server-example.html
 public class UserServiceIT {
@@ -70,7 +70,7 @@ public class UserServiceIT {
         @Resource
         private String url;
 
-         @Bean(name = "usersProxy")
+        @Bean(name = "usersProxy")
         public UserService usersProxy() {
             JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
             jaxWsProxyFactoryBean.setServiceClass(UserService.class);

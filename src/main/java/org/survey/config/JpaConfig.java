@@ -18,7 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-////@EnableTransactionManagement
+//// @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "org.survey")
 @EntityScan(basePackages = "org.survey")
 public class JpaConfig {
@@ -26,15 +26,15 @@ public class JpaConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         // H2
-//        dataSource.setDriverClassName("org.h2.Driver");
-//        dataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false");
-//        dataSource.setUsername("sa");
-//        dataSource.setPassword("");
+        // dataSource.setDriverClassName("org.h2.Driver");
+        // dataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false");
+        // dataSource.setUsername("sa");
+        // dataSource.setPassword("");
         // hsqldb
-         dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
-         dataSource.setUrl("jdbc:hsqldb:mem:mem:aname");
-         dataSource.setUsername("sa");
-         dataSource.setPassword("");
+        dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
+        dataSource.setUrl("jdbc:hsqldb:mem:mem:aname");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
         return dataSource;
     }
 
@@ -54,13 +54,15 @@ public class JpaConfig {
         // em.setPackagesToScan("package.where.your.entites.like.CustSys.are.stored");
         return em;
     }
+
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         properties.setProperty("spring.jpa.show-sql", "true");
         return properties;
-     }    
+    }
+
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
