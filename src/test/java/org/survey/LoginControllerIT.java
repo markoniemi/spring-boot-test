@@ -22,13 +22,13 @@ import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.survey.config.ApplicationConfig;
+import org.survey.config.IntegrationTestConfig;
 
 import lombok.extern.log4j.Log4j2;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
-@ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
+@ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
 @Log4j2
 public class LoginControllerIT {
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
@@ -38,7 +38,7 @@ public class LoginControllerIT {
     @Test
     public void login() throws Exception {
         HttpHeaders headers = createHeaders();
-        MultiValueMap<String, String> body = createBody("admin", "admin");
+        MultiValueMap<String, String> body = createBody("admin1", "admin");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
                 HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
         Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
@@ -59,7 +59,7 @@ public class LoginControllerIT {
     @Test
     public void failedLogin() throws Exception {
         HttpHeaders headers = createHeaders();
-        MultiValueMap<String, String> body = createBody("admin", "wrong");
+        MultiValueMap<String, String> body = createBody("admin1", "wrong");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
                 HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
         Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());

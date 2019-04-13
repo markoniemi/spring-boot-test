@@ -14,13 +14,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.survey.config.ApplicationConfig;
+import org.survey.config.IntegrationTestConfig;
 
 import lombok.extern.log4j.Log4j2;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
-@ContextHierarchy(@ContextConfiguration(classes = ApplicationConfig.class))
+@ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
 @Log4j2
 @Ignore("implement security")
 // TODO
