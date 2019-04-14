@@ -1,5 +1,5 @@
 # spring-boot-test
-
+[![Build Status](https://dev.azure.com/markoniemi0275/markoniemi/_apis/build/status/markoniemi.spring-boot-test?branchName=master)](https://dev.azure.com/markoniemi0275/markoniemi/_build/latest?definitionId=4&branchName=master)
 [![CircleCI](https://circleci.com/gh/markoniemi/spring-boot-test.svg?style=svg)](https://circleci.com/gh/markoniemi/spring-boot-test)
 [![Build Status](https://travis-ci.org/markoniemi/spring-boot-test.svg?branch=master)](https://travis-ci.org/markoniemi/spring-boot-test)
 [![SonarCloud](https://sonarcloud.io/api/badges/gate?key=org.survey:spring-boot-test)](https://sonarcloud.io/dashboard?id=org.survey:spring-boot-test)
