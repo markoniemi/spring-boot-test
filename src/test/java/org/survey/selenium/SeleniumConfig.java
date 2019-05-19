@@ -28,7 +28,7 @@ public class SeleniumConfig {
 
     @Bean
     public WebDriver getWebDriver() {
-        ChromeDriverManager.chromedriver().version("73.0.3683.68").setup();
+        ChromeDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1200x800");
