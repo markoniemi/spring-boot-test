@@ -12,7 +12,7 @@
         <http.protocol>http</http.protocol>
         <org.apache.cxf.version>3.1.16</org.apache.cxf.version>
         <selenium.version>3.11.0</selenium.version>
-        <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
+        <spring.boot.version>2.1.8.RELEASE</spring.boot.version>
     </properties>
     <dependencies>
         <dependency>
