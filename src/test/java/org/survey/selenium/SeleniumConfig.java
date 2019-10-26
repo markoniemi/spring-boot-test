@@ -23,7 +23,7 @@ public class SeleniumConfig {
 
     @Bean(name = "loginUrl")
     public String getLoginUrl() {
-        return protocol + "://localhost:" + port + contextPath();
+        return protocol + "://localhost:" + port;
     }
 
     @Bean
@@ -39,14 +39,4 @@ public class SeleniumConfig {
         chromeDriver.manage().timeouts().implicitlyWait(100, TimeUnit.MILLISECONDS);
         return chromeDriver;
     }
-
-//    @Bean
-    public String contextPath() {
-        return "/survey-spring-web";
-    }
-
-//    @Bean
-//    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-//        return new PropertySourcesPlaceholderConfigurer();
-//    }
 }

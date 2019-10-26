@@ -18,6 +18,6 @@ public class IntegrationTestConfig {
 
     @Bean
     public String url() {
-        return "http://localhost:8082/survey-spring-web";
+        return "http://localhost:8082";
     }
 }
