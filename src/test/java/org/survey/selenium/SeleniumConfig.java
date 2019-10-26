@@ -40,13 +40,13 @@ public class SeleniumConfig {
         return chromeDriver;
     }
 
-    @Bean
+//    @Bean
     public String contextPath() {
         return "/survey-spring-web";
     }
 
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
+//    @Bean
+//    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+//        return new PropertySourcesPlaceholderConfigurer();
+//    }
 }
