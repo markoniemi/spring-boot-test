@@ -15,4 +15,9 @@ public class IntegrationTestConfig {
     public UserService getUserService() {
         return new UserServiceImpl();
     }
+
+    @Bean
+    public String url() {
+        return "http://localhost:8082/survey-spring-web";
+    }
 }

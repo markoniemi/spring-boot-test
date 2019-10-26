@@ -11,8 +11,12 @@
         <http.port>8082</http.port>
         <http.protocol>http</http.protocol>
         <org.apache.cxf.version>3.1.16</org.apache.cxf.version>
-        <selenium.version>3.11.0</selenium.version>
-        <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
+        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
+        <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
+        <bootstrap.version>3.3.6</bootstrap.version>
+        <jquery.version>2.1.1</jquery.version>
+        <maven.cargo.version>1.6.5</maven.cargo.version>
+        <selenium.version>3.13.0</selenium.version>
     </properties>
     <dependencies>
         <dependency>
@@ -37,12 +41,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.hateoas</groupId>
-                    <artifactId>spring-hateoas</artifactId>
-                </exclusion>
-            </exclusions>
+<!--             <exclusions> -->
+<!--                 <exclusion> -->
+<!--                     <groupId>org.springframework.hateoas</groupId> -->
+<!--                     <artifactId>spring-hateoas</artifactId> -->
+<!--                 </exclusion> -->
+<!--             </exclusions> -->
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -111,7 +115,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>2.1.1</version>
+            <version>${jquery.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
