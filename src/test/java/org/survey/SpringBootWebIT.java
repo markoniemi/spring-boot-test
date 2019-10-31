@@ -70,9 +70,9 @@ public class SpringBootWebIT {
     }
 
     private void deleteUserFromRepository(String username) {
-        User user = userService.findOne(username);
+        User user = userService.findByUsername(username);
         if (user != null) {
-            userService.delete(username);
+            userService.delete(user.getId());
         }
     }
 }

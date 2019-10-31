@@ -1,26 +1,39 @@
 package org.survey.config;
 
 import javax.annotation.Resource;
-import javax.xml.ws.Endpoint;
+import javax.servlet.Servlet;
 
-import org.apache.cxf.Bus;
-import org.apache.cxf.jaxws.EndpointImpl;
+import org.jvnet.jax_ws_commons.spring.SpringService;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.survey.service.user.UserService;
 
+import com.sun.xml.ws.transport.http.servlet.SpringBinding;
+import com.sun.xml.ws.transport.http.servlet.WSSpringServlet;
+
 @Configuration
 public class WebServiceConfig {
     @Resource
-    private UserService userService;
-    @Resource
-    private Bus bus;
+    UserService userService;
 
     @Bean
-    public Endpoint endpoint() {
-        EndpointImpl endpoint = new EndpointImpl(bus, userService);
-        endpoint.setAddress("/soap");
-        endpoint.publish("/soap");
-        return endpoint;
+    public Servlet jaxwsServlet() {
+        return new WSSpringServlet();
+    }
+
+    @Bean
+    public ServletRegistrationBean<Servlet> servletRegistrationBean() {
+        return new ServletRegistrationBean<Servlet>(jaxwsServlet(), "/api/soap/*");
+    }
+
+    @Bean()
+    public SpringBinding springBinding() throws Exception {
+        SpringService service = new SpringService();
+        service.setBean(userService);
+        SpringBinding binding = new SpringBinding();
+        binding.setService(service.getObject());
+        binding.setUrl("/api/soap/users");
+        return binding;
     }
 }

@@ -1,47 +1,30 @@
 package org.survey.service.user;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.jws.WebService;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.lang3.Validate;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
 
 import lombok.extern.log4j.Log4j2;
 
-/**
- * WebService implementation of UserService. Can not use delegate design
- * pattern, since UserRepository uses overloaded methods, and apparently WS-I
- * profile does not support them. Even so, it might be better to reveal only
- * some of the UserRepository methods as WebService. Also, WebService does not
- * support lists without extensions. WebParam annotations are not necessary, but
- * adds proper names to parameters in WSDL. endpointInterface and serviceName
- * are probably unneccessary.
- */
-@Primary
-@Service
 @Log4j2
-@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "userService")
+@Component(value = "userService")
+@WebService(endpointInterface = "org.survey.service.user.UserService", serviceName = "UserService")
 public class UserServiceImpl implements UserService {
     @Resource
-    // @Autowired
     private UserRepository userRepository;
-    // @Resource
-    // private FileRepository fileRepository;
 
     @Override
-    public List<User> findAll() {
+    public User[] findAll() {
         log.trace("findAll");
-        return IterableUtils.toList(userRepository.findAll());
+        return IterableUtils.toList(userRepository.findAll()).toArray(new User[0]);
     }
 
     @Override
-    // @Transactional(readOnly=false)
     public User create(User user) {
         Validate.notNull(user, "invalid.user");
         Validate.notBlank(user.getUsername(), "invalid.user.username");
@@ -63,9 +46,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    // TODO rename to findByUsername
-    public User findOne(String username) {
-        log.trace("findByUsername: {}", username);
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
@@ -76,21 +62,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean exists(String username) {
-        return userRepository.findByUsername(username) != null;
+    public boolean exists(Long id) {
+        return userRepository.existsById(id);
     }
 
     @Override
-    public void delete(String username) {
-        log.trace("delete: {}", username);
-        User user = userRepository.findByUsername(username);
-        // Validate.notNull(user, "User does not exist.");
-        if (user == null) {
-            return;
+    public void delete(Long id) {
+        log.trace("delete: {}", id);
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
         }
-        // List<File> files = fileRepository.findAllByOwner(user);
-        // fileRepository.delete(files);
-        userRepository.deleteById(user.getId());
     }
 
     @Override

@@ -37,7 +37,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
     @Override
     public Authentication authenticate(Authentication authentication) {
         log.debug("authenticate {}", authentication.getName());
-        User user = userService.findOne(authentication.getName());
+        User user = userService.findByUsername(authentication.getName());
         return authenticateUser(user, authentication);
     }
 

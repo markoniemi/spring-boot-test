@@ -67,7 +67,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
     public ModelAndView editUser(@PathVariable String username) {
-        User user = userService.findOne(username);
+        User user = userService.findByUsername(username);
         log.debug("editUser() - found user: " + user);
         if (user == null) {
             user = new User();
@@ -81,7 +81,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/delete/{username}", method = RequestMethod.POST)
     public String deleteUser(@PathVariable String username) {
-        userService.delete(username);
+        userService.delete(userService.findByUsername(username).getId());
         return "redirect:/user/users";
     }
 

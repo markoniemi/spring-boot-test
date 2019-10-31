@@ -11,11 +11,10 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-//@EnableAutoConfiguration
 @Configuration
 @ComponentScan(basePackages = "org.survey")
 @EntityScan(basePackages = "org.survey.model")
-@Import({ JpaConfig.class,  WebMvcConfig.class, RestConfig.class, WebServiceConfig.class,
+@Import({ JpaConfig.class,  WebMvcConfig.class, WebServiceConfig.class,
         WebSecurityConfig.class })
 public class ApplicationConfig {
     @Bean
