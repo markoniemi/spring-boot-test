@@ -18,5 +18,6 @@
 		<Logger name="com.gargoylesoftware" level="OFF" />
 		<Logger name="org.hibernate" level="ERROR" />
 		<Logger name="org.apache.logging" level="ERROR" />
+		<Logger name="org.apache.tomcat.util.scan" level="ERROR" />
     </Loggers>
 </Configuration>
