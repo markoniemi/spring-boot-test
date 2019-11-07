@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "org.survey")
-@EntityScan(basePackages = "org.survey")
+@EntityScan(basePackages = "org.survey.model")
 public class JpaConfig {
 }
