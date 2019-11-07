@@ -53,8 +53,8 @@
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
         <!-- JAX-WS -->
         <dependency>
