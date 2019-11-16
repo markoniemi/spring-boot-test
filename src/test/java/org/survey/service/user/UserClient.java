@@ -27,15 +27,15 @@ public interface UserClient extends UserService {
     User update(@RequestBody User user);
 
     @Override
-    @GetMapping(value = "/users/username/{username}")
-    User findByUsername(@PathVariable("username") String username);
-
-    @Override
     @GetMapping(value = "/users/{id}")
     User findById(@PathVariable("id") Long id);
 
     @Override
-    @GetMapping(value = "/users/email/{email}")
+    @GetMapping(value = "/users", params = "username")
+    User findByUsername(@PathVariable("username") String username);
+
+    @Override
+    @GetMapping(value = "/users", params = "email")
     User findByEmail(@PathVariable("email") String email);
 
     @Override

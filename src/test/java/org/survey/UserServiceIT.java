@@ -10,7 +10,6 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -58,6 +57,13 @@ public class UserServiceIT {
         Assert.assertNotNull(users);
         Assert.assertEquals(1, users.size());
     }
+
+    @Test
+    public void getUserRest() throws JsonParseException, JsonMappingException, IOException {
+        User user = testRestTemplate.getForObject(url + "/api/rest/users?username=admin1", User.class);
+        Assert.assertEquals("admin1", user.getUsername());
+    }
+
     @Test
     public void getUsersFeign() throws JsonParseException, JsonMappingException, IOException {
         User[] users = userClient.findAll();
