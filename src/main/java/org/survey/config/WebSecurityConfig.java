@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,7 @@ import org.survey.security.UserRepositoryAuthenticationProvider;
 
 @Configuration
 @EnableWebSecurity
+@Profile("!disableSecurity")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     UserRepositoryAuthenticationProvider userRepositoryAuthenticationProvider;
@@ -23,8 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/user/users").usernameParameter("j_username").passwordParameter("j_password")
                 .failureUrl("/login?error=true").permitAll();
         http.logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/login").permitAll();
-        http.authorizeRequests().antMatchers("/", "/home", "/api/**", "/h2-console/**", "/static/**", "/webjars/**").permitAll()
-                .anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/api/**").authenticated();
+        http.authorizeRequests().antMatchers("/", "/home", "/static/**", "/webjars/**").permitAll().anyRequest()
+                .authenticated();
+
         http.headers().frameOptions().disable();
     }
 

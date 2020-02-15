@@ -5,13 +5,7 @@ import javax.annotation.Resource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.survey.config.IntegrationTestConfig;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.selenium.LoginPage;
@@ -19,10 +13,7 @@ import org.survey.selenium.UserPage;
 import org.survey.selenium.UsersPage;
 import org.survey.service.user.UserService;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
-public class SpringBootWebIT {
+public class SpringBootWebIT extends AbstractIntegrationTestBase{
     @Resource
     protected UserService userService;
     @Resource(name = "loginUrl")

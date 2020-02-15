@@ -11,15 +11,8 @@ import javax.xml.ws.Service;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.survey.config.IntegrationTestConfig;
 import org.survey.model.user.User;
 import org.survey.service.user.UserClient;
 import org.survey.service.user.UserService;
@@ -29,13 +22,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.extern.log4j.Log4j2;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
-@ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
-@Log4j2
-public class UserServiceIT {
+public class UserServiceIT extends AbstractIntegrationTestBase{
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
     @Resource
     private String url;
