@@ -5,7 +5,7 @@
   <groupId>org.survey</groupId>
   <artifactId>spring-boot-test</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <!-- <packaging>war</packaging> -->
+  <packaging>war</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <http.port>8082</http.port>
@@ -23,31 +23,21 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
       <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
+        <!-- <exclusion> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
+        <!-- </exclusion> -->
         <exclusion>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
+    <!-- tomcat -->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jetty</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>apache-jsp</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>apache-jstl</artifactId>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -237,33 +227,27 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+      <artifactId>maven-war-plugin</artifactId>
+      <configuration>
+      <failOnMissingWebXml>false</failOnMissingWebXml>
+      </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>org.survey.SpringBootTestApp</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-      <id>docker</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>com.google.cloud.tools</groupId>
-            <artifactId>jib-maven-plugin</artifactId>
-            <version>2.7.1</version>
-            <executions>
-              <execution>
-                <phase>package</phase>
-                <goals>
-                  <goal>buildTar</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <to>
-                <image>${docker.image.prefix}/${project.artifactId}</image>
-              </to>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>
