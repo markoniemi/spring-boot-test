@@ -5,7 +5,7 @@
   <groupId>org.survey</groupId>
   <artifactId>spring-boot-test</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+<!--   <packaging>war</packaging> -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <http.port>8082</http.port>
@@ -23,10 +23,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
       <exclusions>
-        <!-- <exclusion> -->
-        <!-- <groupId>org.springframework.boot</groupId> -->
-        <!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
-        <!-- </exclusion> -->
         <exclusion>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
@@ -198,6 +194,9 @@
   <build>
     <defaultGoal>install</defaultGoal>
     <resources>
+<!--       <resource> -->
+<!--         <directory>src/main/webapp</directory> -->
+<!--       </resource> -->
       <resource>
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
@@ -218,6 +217,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <classesDirectory>${project.build.outputDirectory}</classesDirectory>        
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -226,12 +228,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-      <artifactId>maven-war-plugin</artifactId>
-      <configuration>
-      <failOnMissingWebXml>false</failOnMissingWebXml>
-      </configuration>
       </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
