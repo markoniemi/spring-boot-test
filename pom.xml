@@ -216,9 +216,9 @@
   <build>
     <defaultGoal>install</defaultGoal>
     <resources>
-<!--       <resource> -->
-<!--       <directory>src/main/webapp</directory> -->
-<!--       </resource> -->
+      <!-- <resource> -->
+      <!-- <directory>src/main/webapp</directory> -->
+      <!-- </resource> -->
       <resource>
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
@@ -259,14 +259,14 @@
         </configuration>
         <executions>
           <execution>
-          <id>repackage</id>
+            <id>repackage</id>
             <phase>package</phase>
             <goals>
               <goal>repackage</goal>
             </goals>
           </execution>
         </executions>
-      </plugin>      
+      </plugin>
     </plugins>
   </build>
   <profiles>
