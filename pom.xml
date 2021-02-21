@@ -286,6 +286,9 @@
               </execution>
             </executions>
             <configuration>
+              <from>
+                <image>openjdk:8-jdk-alpine</image>
+              </from>
               <to>
                 <image>${docker.image.prefix}/${project.artifactId}</image>
               </to>
@@ -293,8 +296,30 @@
                 <ports>
                   <port>8082</port>
                 </ports>
+                <user>51603</user>
               </container>
+              <pluginExtensions>
+                <pluginExtension>
+                  <implementation>com.google.cloud.tools.jib.maven.extension.ownership.JibOwnershipExtension</implementation>
+                  <configuration
+                    implementation="com.google.cloud.tools.jib.maven.extension.ownership.Configuration">
+                    <rules>
+                      <rule>
+                        <glob>/**</glob>
+                        <ownership>51603:51603</ownership>
+                      </rule>
+                    </rules>
+                  </configuration>
+                </pluginExtension>
+              </pluginExtensions>
             </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-ownership-extension-maven</artifactId>
+                <version>0.1.0</version>
+              </dependency>
+            </dependencies>
           </plugin>
         </plugins>
       </build>
