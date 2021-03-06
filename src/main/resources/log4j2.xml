@@ -6,11 +6,11 @@
     </Console>
   </Appenders>
   <Loggers>
-    <Root level="${sys:log.level.root:-INFO}">
+    <Root level="INFO">
       <AppenderRef ref="Console" />
     </Root>
-    <Logger name="api" level="${sys:log.level.api:-DEBUG}"/>
-    <Logger name="org.survey" level="${sys:logLevel:-DEBUG}" />
+    <Logger name="org.survey" level="DEBUG" />
+    <Logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="${sys:log.level.api:-DEBUG}" />
     <Logger name="org.springframework" level="WARN" />
     <Logger name="org.springframework.web.servlet.mvc"
       level="WARN" />

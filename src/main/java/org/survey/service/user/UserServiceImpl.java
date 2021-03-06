@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User[] findAll() {
-        log.trace("findAll");
         return IterableUtils.toList(userRepository.findAll()).toArray(new User[0]);
     }
 
@@ -57,7 +56,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByEmail(String email) {
-        log.trace("findByEmail: {}", email);
         return userRepository.findByEmail(email);
     }
 
@@ -68,10 +66,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Long id) {
-        log.trace("delete: {}", id);
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         }
+        log.trace("delete: {}", id);
     }
 
     @Override

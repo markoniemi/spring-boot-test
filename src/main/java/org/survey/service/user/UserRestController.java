@@ -18,72 +18,66 @@ import org.survey.repository.user.UserRepository;
 
 import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @RestController
-@RequestMapping("/api/rest")
-@Log4j2(topic = "api")
+@RequestMapping("/api/rest/users")
 public class UserRestController {
     @Resource
     private UserRepository userRepository;
 
-    @GetMapping(value = "/users")
+    @GetMapping
     public User[] findAll() {
-        log.debug("GET:/users");
         return IterableUtils.toList(userRepository.findAll()).toArray(new User[0]);
     }
 
-    @PostMapping(value = "/users")
+    @PostMapping
     public User create(@RequestBody User user) {
-        log.debug("POST:/users {}", user);
+        log.trace("create: {}", user);
         return userRepository.save(user);
     }
 
-    @PutMapping(value = "/users")
+    @PutMapping
     public User update(@RequestBody User user) {
-        log.debug("PUT:/users {}", user);
         User databaseUser = userRepository.findByUsername(user.getUsername());
         Validate.notNull(databaseUser, "User does not exist.");
         databaseUser.setEmail(user.getEmail());
         databaseUser.setPassword(user.getPassword());
         databaseUser.setRole(user.getRole());
         databaseUser.setUsername(user.getUsername());
+        log.trace("update: {}", databaseUser);
         return userRepository.save(databaseUser);
     }
 
-    @DeleteMapping(value = "/users/{id}")
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable("id") Long id) {
-        log.debug("DELETE:/users/{}", id);
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         }
+        log.trace("delete: {}", id);
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value = "/{id}")
     public User findById(@PathVariable("id") Long id) {
-        log.debug("GET:/users/{}", id);
         return userRepository.findById(id).orElse(null);
     }
 
-    @GetMapping(value = "/users", params = "username")
+    @GetMapping( params = "username")
     public User findByUsername(@RequestParam String username) {
-        log.debug("GET:/users?username={}", username);
         return userRepository.findByUsername(username);
     }
 
-    @GetMapping(value = "/users", params = "email")
+    @GetMapping( params = "email")
     public User findByEmail(@RequestParam String email) {
-        log.debug("GET:/users?email={}", email);
         return userRepository.findByEmail(email);
     }
 
-    @GetMapping(value = "/users/exists/{id}")
+    @GetMapping(value = "/exists/{id}")
     public boolean exists(@PathVariable("id") Long id) {
-        log.debug("GET:/users/exists/{}", id);
         return userRepository.existsById(id);
     }
 
-    @GetMapping(value = "/users/count")
+    @GetMapping(value = "/count")
     public long count() {
-        log.debug("GET:/users/count");
         return userRepository.count();
     }
 }

@@ -26,7 +26,7 @@ import org.survey.service.user.UserService;
 import lombok.extern.log4j.Log4j2;
 
 @Controller
-@Log4j2(topic = "api")
+@Log4j2
 public class UserController {
     @Autowired
     private MessageSource messageSource;
@@ -42,7 +42,6 @@ public class UserController {
 
     @RequestMapping(value = "/user/save", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute @Validated User user, BindingResult bindingResult) {
-        log.debug("POST:/user/save: {}", user);
         if (bindingResult.hasErrors()) {
             return "/user/user";
         }
@@ -63,13 +62,11 @@ public class UserController {
 
     @RequestMapping(value = "/user/new", method = RequestMethod.GET)
     public ModelAndView newUser() {
-        log.debug("GET:/user/new");
         return editUser(null);
     }
 
     @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
     public ModelAndView editUser(@PathVariable String username) {
-        log.debug("GET:/user/{}",username);
         User user = userService.findByUsername(username);
         log.debug("editUser() - found user: " + user);
         if (user == null) {
@@ -84,7 +81,6 @@ public class UserController {
 
     @RequestMapping(value = "/user/delete/{username}", method = RequestMethod.POST)
     public String deleteUser(@PathVariable String username) {
-        log.debug("DELETE:/user/delete/{}",username);
         userService.delete(userService.findByUsername(username).getId());
         return "redirect:/user/users";
     }
