@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.survey</groupId>
@@ -24,14 +23,17 @@
       <exclusions>
         <exclusion>
           <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
-    <!-- tomcat -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <artifactId>spring-boot-starter-jetty</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -257,14 +259,11 @@
               <execution>
                 <phase>package</phase>
                 <goals>
-                  <goal>buildTar</goal>
+                  <goal>dockerBuild</goal>
                 </goals>
               </execution>
             </executions>
             <configuration>
-              <from>
-                <image>openjdk:8-jdk-alpine</image>
-              </from>
               <to>
                 <image>${docker.image.prefix}/${project.artifactId}</image>
               </to>
@@ -272,30 +271,8 @@
                 <ports>
                   <port>8082</port>
                 </ports>
-                <user>51603</user>
               </container>
-              <pluginExtensions>
-                <pluginExtension>
-                  <implementation>com.google.cloud.tools.jib.maven.extension.ownership.JibOwnershipExtension</implementation>
-                  <configuration
-                    implementation="com.google.cloud.tools.jib.maven.extension.ownership.Configuration">
-                    <rules>
-                      <rule>
-                        <glob>/**</glob>
-                        <ownership>51603:51603</ownership>
-                      </rule>
-                    </rules>
-                  </configuration>
-                </pluginExtension>
-              </pluginExtensions>
             </configuration>
-            <dependencies>
-              <dependency>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-ownership-extension-maven</artifactId>
-                <version>0.1.0</version>
-              </dependency>
-            </dependencies>
           </plugin>
         </plugins>
       </build>
