@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title th:text="#{user}" />
+    <base href="${#httpServletRequest.getContextPath()}" />
+    <link rel='stylesheet' href='../webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+  </head>
+  <body>
+    <script type="text/javascript" src="../webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <div th:replace="@{/common/menu.html}"></div>
+
+    <form class="form-horizontal" action="#" th:action="@{/user/save}" th:object="${user}" method="post">
+      <input name="id" type="hidden" th:field="*{id}" />
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="username" th:text="#{username}" />
+        <div class="col-md-4">
+          <input name="username" th:readonly="${user.id != null}" th:field="*{username}"
+            class="form-control input-md" />
+          <errors th:errors="*{username}" class="text-danger" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="password" th:text="#{password}" />
+        <div class="col-md-4">
+          <!-- thymeleaf password input requires special treatment -->
+          <input id="password" name="password" type="password" class="form-control input-md"
+            th:value="${user.password}">
+          <errors th:errors="*{password}" class="text-danger" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="email" th:text="#{email}" />
+        <div class="col-md-4">
+          <input id="email" name="email" type="text" class="form-control input-md" th:field="*{email}">
+          <errors th:errors="*{email}" class="text-danger" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="role" th:text="#{role}" />
+        <div class="col-md-4">
+          <select id="role" name="role" path="role" th:field="*{role}" class="form-control input-md">
+            <option th:each="role: ${roles}" th:value="${role.key}" th:text="${role.value}" />
+          </select>
+          <errors th:errors="*{role}" class="text-danger" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-4">
+          <form:errors path="*" class="alert alert-danger" role="alert" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <button id="submit" name="" class="btn btn-primary">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

@@ -22,10 +22,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
       <exclusions>
-        <!-- <exclusion> -->
-        <!-- <groupId>org.springframework.boot</groupId> -->
-        <!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
-        <!-- </exclusion> -->
         <exclusion>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
@@ -38,26 +34,6 @@
       <artifactId>spring-boot-starter-tomcat</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-jasper</artifactId>
-    </dependency>
-    <!-- <dependency> -->
-    <!-- <groupId>org.springframework.boot</groupId> -->
-    <!-- <artifactId>spring-boot-starter-jetty</artifactId> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>javax.servlet</groupId> -->
-    <!-- <artifactId>jstl</artifactId> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.eclipse.jetty</groupId> -->
-    <!-- <artifactId>apache-jsp</artifactId> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.eclipse.jetty</groupId> -->
-    <!-- <artifactId>apache-jstl</artifactId> -->
-    <!-- </dependency> -->
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
@@ -66,8 +42,12 @@
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf-spring5</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -76,10 +56,6 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-taglibs</artifactId>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>

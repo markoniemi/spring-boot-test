@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title th:text="#{users}" />
+    <base href="${#httpServletRequest.getContextPath()}" />
+    <link rel='stylesheet' href='../webjars/bootstrap/3.3.6/css/bootstrap.min.css'></link>
+  </head>
+  <body>
+    <script type="text/javascript" src="../webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <div class="content">
+      <div th:replace="@{/common/menu.html}"></div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th th:text="#{username}"></th>
+            <th th:text="#{email}"></th>
+            <th th:text="#{role}"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <c:forEach items="${users}" var="user" varStatus="status">
+            <tr th:each="user: ${users}">
+              <td id="username" th:text="${user.username}"></td>
+              <td id="email" th:text="${user.email}"></td>
+              <td id="role" th:text="#{${user.role}}"></td>
+              <td>
+                <form:form class="form-horizontal" method="POST">
+                  <a th:href="@{${user.username}}" id="edit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                  <button id="delete" class="btn btn-primary" type="submit"
+                    th:formaction="@{'user/delete/' + ${user.username}}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </form:form>
+              </td>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+      <form th:action="@{/user/new}" method="GET">
+        <input id="addUser" class="btn btn-primary" type="submit" th:value="#{addUser}" />
+      </form>
+    </div>
+    <div th:replace="@{/common/footer.html}"></div>
+  </body>
+</html>
