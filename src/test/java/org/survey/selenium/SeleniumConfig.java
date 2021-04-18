@@ -9,14 +9,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 @ComponentScan(basePackages = "org.selenium")
-@PropertySource("classpath:server.properties")
+@PropertySource("classpath:application.properties")
 public class SeleniumConfig {
-    @Value("${http.port}")
+    @Value("${server.port}")
     private int port;
     @Value("${http.protocol}")
     private String protocol;
