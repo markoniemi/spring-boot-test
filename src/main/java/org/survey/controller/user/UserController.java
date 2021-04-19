@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -43,9 +42,9 @@ public class UserController {
     @RequestMapping(value = "/user/save", method = RequestMethod.POST)
     public ModelAndView saveUser(@ModelAttribute @Validated User user, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
+        model.addObject("roles", getRolesAsMap());
+        model.setViewName("/user/user");
         if (bindingResult.hasErrors()) {
-            model.addObject("roles", getRolesAsMap());
-            model.setViewName("/user/user");
             return model;
         }
         try {
@@ -55,11 +54,7 @@ public class UserController {
                 userService.create(user);
             }
         } catch (Exception e) {
-            bindingResult.addError(new ObjectError("user", e.getMessage()));
-        }
-        if (bindingResult.hasErrors()) {
-            model.addObject("roles", getRolesAsMap());
-            model.setViewName("/user/user");
+            bindingResult.reject(e.getMessage());
             return model;
         }
         model.setViewName("redirect:/user/users");

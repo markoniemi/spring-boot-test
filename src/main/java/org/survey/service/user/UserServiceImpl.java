@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User create(User user) {
         Validate.notNull(user, "invalid.user");
-        Validate.notBlank(user.getUsername(), "invalid.user.username");
-        Validate.isTrue(userRepository.findByUsername(user.getUsername()) == null, "exist.user.username");
+        Validate.notBlank(user.getUsername(), "invalid.username");
+        Validate.isTrue(userRepository.findByUsername(user.getUsername()) == null, "existing.username");
         log.trace("create: {}", user);
         return userRepository.save(user);
     }

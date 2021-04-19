@@ -44,6 +44,8 @@ public class SpringBootWebIT extends AbstractIntegrationTestBase{
         webDriver.get(loginUrl);
         loginPage.login("admin1", "admin");
         usersPage.clickAddUser();
+        userPage.validateUser();
+        usersPage.clickAddUser();
         userPage.addUser("admin_user", "admin_user@test.com", "another", Role.ROLE_ADMIN);
         usersPage.assertUserRole("admin_user", "Admin");
         usersPage.clickAddUser();

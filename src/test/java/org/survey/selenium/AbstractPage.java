@@ -18,6 +18,10 @@ public abstract class AbstractPage {
         assertTitle("Login");
     }
 
+    public void users() {
+        click(By.id("menu-users"));
+        assertTitle("Users");
+    }
     public void polls() {
         click(By.id("menu-polls"));
         assertTitle("Polls");
