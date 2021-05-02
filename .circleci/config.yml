@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/spring-boot-test
     docker:
-      - image: markhobson/maven-chrome
+      - image: markhobson/maven-chrome:jdk-8
     environment:
       MAVEN_OPTS: -Xmx3200m
     steps:
