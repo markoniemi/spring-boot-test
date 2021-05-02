@@ -10,8 +10,8 @@
     <http.protocol>http</http.protocol>
     <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
     <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
-    <bootstrap.version>3.3.6</bootstrap.version>
-    <jquery.version>2.1.1</jquery.version>
+    <bootstrap.version>4.6.0-1</bootstrap.version>
+    <jquery.version>3.6.0</jquery.version>
     <maven.cargo.version>1.6.5</maven.cargo.version>
     <selenium.version>3.13.0</selenium.version>
     <docker.image.prefix>markoniemi</docker.image.prefix>
@@ -107,7 +107,12 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>bootstrap</artifactId>
-      <version>3.3.6</version>
+      <version>${bootstrap.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>bootstrap-icons</artifactId>
+      <version>1.4.1</version>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>

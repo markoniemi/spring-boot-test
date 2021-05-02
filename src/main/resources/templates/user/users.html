@@ -3,12 +3,13 @@
   <head>
     <title th:text="#{users}" />
     <base href="${#httpServletRequest.getContextPath()}" />
-    <link rel='stylesheet' th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"></link>
+    <link rel='stylesheet' th:href="@{/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"></link>
     <link rel='stylesheet' th:href="@{/css/style.css}"></link>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/1.4.1/font/bootstrap-icons.css}"></link>
   </head>
   <body>
-    <script type="text/javascript" src="/webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/webjars/3.6.0/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js}"></script>
     <div class="content">
       <div th:replace="common/menu.html"></div>
 
@@ -29,11 +30,11 @@
               <td>
                 <form:form class="form-horizontal" method="POST">
                   <a th:href="@{${user.username}}" id="edit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="bi bi-pencil-square"></span>
                   </a>
                   <button id="delete" class="btn btn-primary" type="submit"
                     th:formaction="@{'user/delete/' + ${user.username}}">
-                    <span class="glyphicon glyphicon-remove"></span>
+                    <span class="bi bi-trash-fill"></span>
                   </button>
                 </form:form>
               </td>
