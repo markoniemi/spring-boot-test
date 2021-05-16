@@ -8,8 +8,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <http.port>8082</http.port>
     <http.protocol>http</http.protocol>
-    <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
-    <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
+    <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
+    <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
     <bootstrap.version>4.6.0-1</bootstrap.version>
     <jquery.version>3.6.0</jquery.version>
     <maven.cargo.version>1.6.5</maven.cargo.version>

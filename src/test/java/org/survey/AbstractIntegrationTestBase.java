@@ -34,7 +34,7 @@ import lombok.extern.log4j.Log4j2;
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
 @Log4j2
-@ActiveProfiles(profiles = { "disableSecurity", "h2" })
+@ActiveProfiles(profiles = { "h2" })
 public class AbstractIntegrationTestBase {
     @Autowired
     protected Environment environment;
