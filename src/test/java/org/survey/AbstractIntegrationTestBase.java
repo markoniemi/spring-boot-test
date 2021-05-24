@@ -7,10 +7,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.netflix.ribbon.RibbonAutoConfiguration;
+import org.springframework.cloud.openfeign.FeignAutoConfiguration;
+import org.springframework.cloud.openfeign.ribbon.FeignRibbonClientAutoConfiguration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -35,11 +39,10 @@ import lombok.extern.log4j.Log4j2;
 @ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
 @Log4j2
 @ActiveProfiles(profiles = { "h2" })
+@ImportAutoConfiguration({RibbonAutoConfiguration.class, FeignRibbonClientAutoConfiguration.class, FeignAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class})
 public class AbstractIntegrationTestBase {
     @Autowired
     protected Environment environment;
-    @Autowired
-    protected DiscoveryClient discoveryClient;
 
     @Test
     public void dummy() {
@@ -60,13 +63,5 @@ public class AbstractIntegrationTestBase {
 
     protected boolean isCloudConfigEnabled() {
         return !Arrays.asList(environment.getActiveProfiles()).contains("local");
-    }
-
-    @SuppressWarnings("squid:S2925")
-    protected void waitForServiceRegistration() throws InterruptedException {
-        while (discoveryClient.getInstances("user-repository").isEmpty()) {
-            Thread.sleep(1000);
-            log.info(discoveryClient.getServices());
-        }
     }
 }

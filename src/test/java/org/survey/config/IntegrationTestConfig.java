@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Import;
 import org.survey.selenium.SeleniumConfig;
 
 @Configuration
-@Import({ JpaConfig.class, ApplicationConfig.class, SeleniumConfig.class })
+@Import({ SeleniumConfig.class })
 @EnableFeignClients(basePackages = { "org.survey.service.user" })
 public class IntegrationTestConfig {
     @Bean
