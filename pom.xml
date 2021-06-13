@@ -8,12 +8,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <http.port>8082</http.port>
     <http.protocol>http</http.protocol>
+    <spring-cloud.version>Hoxton.SR11</spring-cloud.version>
     <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
     <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
     <bootstrap.version>4.6.0-1</bootstrap.version>
     <jquery.version>3.6.0</jquery.version>
-    <maven.cargo.version>1.6.5</maven.cargo.version>
-    <selenium.version>3.13.0</selenium.version>
     <docker.image.prefix>markoniemi</docker.image.prefix>
   </properties>
   <dependencies>
@@ -122,7 +121,7 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>webjars-locator</artifactId>
-      <version>0.40</version>
+      <version>0.41</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -151,7 +150,6 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
-      <version>2.2.8.RELEASE</version>
       <scope>test</scope>
     </dependency>
     <!-- Selenium -->
@@ -176,13 +174,6 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.jboss.arquillian.selenium</groupId>
-        <artifactId>selenium-bom</artifactId>
-        <version>${selenium.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>${spring.boot.version}</version>
@@ -194,6 +185,13 @@
             <artifactId>spring-boot-starter-logging</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
