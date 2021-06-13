@@ -8,11 +8,9 @@
   </head>
   <body>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <div class="container-fluid col-3">
+    <div class="container-fluid col-3 mt-5">
       <form name="loginForm" action="/j_spring_security_check" method="POST">
         <fieldset>
-          <div class="form-group">
-          </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-prepend input-group-text">
@@ -21,8 +19,6 @@
               <input id="j_username" class="form-control" th:placeholder="#{username}" name="j_username"
                 type="text" autofocus />
             </div>
-          </div>
-          <div class="form-group">
             <div class="input-group">
               <span class="input-group-prepend input-group-text">
                 <i class="bi bi-lock-fill"></i>
@@ -30,13 +26,13 @@
               <input id="j_password" class="form-control" th:placeholder="#{password}" name="j_password"
                 type="password" value="" />
             </div>
-          </div>
-          <div class="form-group">
-            <button id="loginButton" type="submit" th:title="login" class="btn btn-lg btn-primary btn-block"
-              th:text="#{login}"></button>
-          </div>
-          <div class="form-group">
-            <span th:if="${param.error}" class="alert alert-danger" role="alert" th:text="#{login.error}"></span>
+            <div class="input-group mt-2">
+              <button id="loginButton" type="submit" th:title="login" class="btn btn-lg btn-primary btn-block"
+                th:text="#{login}"></button>
+            </div>
+            <div class="input-group mt-2">
+              <span th:if="${param.error}" class="alert alert-danger" role="alert" th:text="#{login.error}"></span>
+            </div>
           </div>
         </fieldset>
       </form>
