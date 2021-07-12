@@ -8,8 +8,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <http.port>8082</http.port>
     <http.protocol>http</http.protocol>
-    <spring-cloud.version>Hoxton.SR11</spring-cloud.version>
-    <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
+    <spring-cloud.version>2020.0.3</spring-cloud.version>
+    <spring.boot.version>2.4.8</spring.boot.version>
     <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
     <bootstrap.version>5.0.1</bootstrap.version>
     <bootstrap-icons.version>1.5.0</bootstrap-icons.version>
@@ -53,6 +53,10 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
@@ -217,10 +221,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.22.2</version>
-        <configuration>
-          <classesDirectory>${project.build.outputDirectory}</classesDirectory>
-        </configuration>
+        <version>2.18</version>
         <executions>
           <execution>
             <goals>
