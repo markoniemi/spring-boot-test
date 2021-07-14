@@ -5,9 +5,11 @@ pool:
   vmImage: 'Ubuntu-20.04'
 
 variables:
-  group: tokens
-  MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
-  MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+- group: tokens
+- name: MAVEN_CACHE_FOLDER
+  value: $(Pipeline.Workspace)/.m2/repository
+- name: MAVEN_OPTS
+  value: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
   
 steps:
 - task: Cache@2
