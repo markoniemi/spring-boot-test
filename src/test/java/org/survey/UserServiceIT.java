@@ -1,5 +1,8 @@
 package org.survey;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -9,8 +12,7 @@ import javax.annotation.Resource;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.survey.model.user.User;
@@ -39,31 +41,31 @@ public class UserServiceIT extends AbstractIntegrationTestBase{
     @Test
     public void getUsersRest() throws JsonParseException, JsonMappingException, IOException {
         ResponseEntity<String> responseString = testRestTemplate.getForEntity(url + "/api/rest/users", String.class);
-        Assert.assertNotNull(responseString);
+        assertNotNull(responseString);
         List<User> users = parseResponse(responseString);
-        Assert.assertNotNull(users);
-        Assert.assertEquals(1, users.size());
+        assertNotNull(users);
+        assertEquals(1, users.size());
     }
 
     @Test
     public void getUserRest() throws JsonParseException, JsonMappingException, IOException {
         User user = testRestTemplate.getForObject(url + "/api/rest/users?username=admin1", User.class);
-        Assert.assertEquals("admin1", user.getUsername());
+        assertEquals("admin1", user.getUsername());
     }
 
     @Test
     public void getUsersFeign() throws JsonParseException, JsonMappingException, IOException {
         User[] users = userClient.findAll();
-        Assert.assertNotNull(users);
-        Assert.assertEquals(1, users.length);
+        assertNotNull(users);
+        assertEquals(1, users.length);
     }
 
     @Test
     public void getUsersWs() throws JsonParseException, JsonMappingException, IOException {
         UserService userService = getUserWsClient();
         User[] users = userService.findAll();
-        Assert.assertNotNull(users);
-        Assert.assertEquals(1, users.length);
+        assertNotNull(users);
+        assertEquals(1, users.length);
     }
 
     private List<User> parseResponse(ResponseEntity<String> responseString)

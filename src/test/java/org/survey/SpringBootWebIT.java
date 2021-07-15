@@ -2,9 +2,9 @@ package org.survey;
 
 import javax.annotation.Resource;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
@@ -24,14 +24,14 @@ public class SpringBootWebIT extends AbstractIntegrationTestBase{
     private UsersPage usersPage;
     private UserPage userPage;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         loginPage = new LoginPage(webDriver);
         usersPage = new UsersPage(webDriver);
         userPage = new UserPage(webDriver);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         deleteUserFromRepository("admin_user");
         deleteUserFromRepository("user_user");

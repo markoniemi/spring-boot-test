@@ -1,7 +1,9 @@
 package org.survey.controller;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
 import org.survey.model.user.Role;
@@ -15,7 +17,7 @@ public class UserValidatorTest {
         User user = new User("username", "password", "email", Role.ROLE_USER);
         Errors errors = new BindException(user, "user");
         userValidator.validate(user, errors);
-        Assert.assertFalse(errors.hasErrors());
+        assertFalse(errors.hasErrors());
     }
 
     @Test
@@ -24,6 +26,6 @@ public class UserValidatorTest {
         User user = new User();
         Errors errors = new BindException(user, "user");
         userValidator.validate(user, errors);
-        Assert.assertEquals(3, errors.getAllErrors().size());
+        assertEquals(3, errors.getAllErrors().size());
     }
 }

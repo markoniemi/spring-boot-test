@@ -1,6 +1,6 @@
 package org.survey.selenium;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +34,7 @@ public class UserPage extends AbstractPage {
 
     private void assertFieldError(By by) {
         WebElement element = webDriver.findElement(by);
-        assertNotNull(webDriver.getPageSource(), element.findElement(By.xpath("//errors")));
+        assertNotNull( element.findElement(By.xpath("//errors")));
     }
 
     public void editUser(String username, String password) {

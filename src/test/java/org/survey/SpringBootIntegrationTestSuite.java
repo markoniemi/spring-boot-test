@@ -1,10 +1,8 @@
 package org.survey;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.platform.suite.api.SelectClasses;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({ 
+@SelectClasses({ 
     ActuatorIT.class,
     LoginControllerIT.class,
     SpringBootWebIT.class,

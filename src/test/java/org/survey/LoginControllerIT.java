@@ -1,12 +1,14 @@
 package org.survey;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,7 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-
 public class LoginControllerIT extends AbstractIntegrationTestBase{
     @Resource
     private String url;
@@ -27,10 +28,10 @@ public class LoginControllerIT extends AbstractIntegrationTestBase{
         MultiValueMap<String, String> body = createBody("admin1", "admin");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
                 HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
-        Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
+        assertEquals(HttpStatus.FOUND, entity.getStatusCode());
         List<String> cookies = entity.getHeaders().get("Set-Cookie");
-        Assert.assertTrue(cookies.toString().contains("JSESSIONID"));
-        Assert.assertEquals(url + "/user/users", entity.getHeaders().getLocation().toString());
+        assertTrue(cookies.toString().contains("JSESSIONID"));
+        assertEquals(url + "/user/users", entity.getHeaders().getLocation().toString());
     }
 
     @Test
@@ -38,8 +39,8 @@ public class LoginControllerIT extends AbstractIntegrationTestBase{
         HttpHeaders headers = createHeaders();
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/user/users", HttpMethod.GET,
                 new HttpEntity<>(headers), String.class);
-        Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
-        Assert.assertEquals(url + "/login", entity.getHeaders().getLocation().toString());
+        assertEquals(HttpStatus.FOUND, entity.getStatusCode());
+        assertEquals(url + "/login", entity.getHeaders().getLocation().toString());
     }
 
     @Test
@@ -48,8 +49,8 @@ public class LoginControllerIT extends AbstractIntegrationTestBase{
         MultiValueMap<String, String> body = createBody("admin1", "wrong");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
                 HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
-        Assert.assertEquals(HttpStatus.FOUND, entity.getStatusCode());
-        Assert.assertEquals(url + "/login?error=true", entity.getHeaders().getLocation().toString());
+        assertEquals(HttpStatus.FOUND, entity.getStatusCode());
+        assertEquals(url + "/login?error=true", entity.getHeaders().getLocation().toString());
     }
 
     private MultiValueMap<String, String> createBody(String username, String password) {

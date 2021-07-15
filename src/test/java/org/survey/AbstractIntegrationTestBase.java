@@ -1,11 +1,12 @@
 package org.survey;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Arrays;
 import java.util.Collections;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
@@ -23,7 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.survey.config.IntegrationTestConfig;
 
 import lombok.extern.log4j.Log4j2;
@@ -32,7 +33,7 @@ import lombok.extern.log4j.Log4j2;
  * Base class for integration tests, enables running multiple tests
  * with @SpringBootTest
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SpringBootTestApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @ContextHierarchy(@ContextConfiguration(classes = IntegrationTestConfig.class))
 @Log4j2
@@ -44,7 +45,7 @@ public class AbstractIntegrationTestBase {
 
     @Test
     public void dummy() {
-        Assert.assertTrue(true);
+        assertTrue(true);
     }
 
     protected String get(String url, MediaType mediaType) {
@@ -55,7 +56,7 @@ public class AbstractIntegrationTestBase {
         ResponseEntity<String> response = new TestRestTemplate().exchange(url, HttpMethod.GET,
                 new HttpEntity<>(headers), String.class);
         log.debug(response.getBody());
-        Assert.assertTrue(response.getStatusCode() == HttpStatus.OK);
+        assertTrue(response.getStatusCode() == HttpStatus.OK);
         return response.getBody();
     }
 

@@ -1,6 +1,8 @@
 package org.survey.selenium;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,8 +24,8 @@ public class UsersPage extends AbstractPage {
 
     public void assertUserRole(String username, String localizedRole) {
         WebElement element = webDriver.findElement(By.xpath("//tr[td='" + username + "']//td[contains(@id,'role')]"));
-        Assert.assertNotNull(element);
-        Assert.assertEquals(localizedRole, element.getText());
+        assertNotNull(element);
+        assertEquals(localizedRole, element.getText());
     }
 
     public void deleteUser(String username) {
