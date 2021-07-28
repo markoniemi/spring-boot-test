@@ -42,7 +42,7 @@ public class SpringBootWebIT extends AbstractIntegrationTestBase{
     @Test
     public void integrationTest() throws InterruptedException {
         webDriver.get(loginUrl);
-        loginPage.login("admin1", "admin");
+        loginPage.login("admin", "admin");
         usersPage.clickAddUser();
         userPage.validateUser();
         usersPage.clickAddUser();

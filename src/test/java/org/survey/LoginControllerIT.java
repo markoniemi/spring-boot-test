@@ -25,7 +25,7 @@ public class LoginControllerIT extends AbstractIntegrationTestBase{
     @Test
     public void login() throws Exception {
         HttpHeaders headers = createHeaders();
-        MultiValueMap<String, String> body = createBody("admin1", "admin");
+        MultiValueMap<String, String> body = createBody("admin", "admin");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
                 HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
         assertEquals(HttpStatus.FOUND, entity.getStatusCode());
@@ -46,7 +46,7 @@ public class LoginControllerIT extends AbstractIntegrationTestBase{
     @Test
     public void failedLogin() throws Exception {
         HttpHeaders headers = createHeaders();
-        MultiValueMap<String, String> body = createBody("admin1", "wrong");
+        MultiValueMap<String, String> body = createBody("admin", "wrong");
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/j_spring_security_check",
                 HttpMethod.POST, new HttpEntity<>(body, headers), String.class);
         assertEquals(HttpStatus.FOUND, entity.getStatusCode());

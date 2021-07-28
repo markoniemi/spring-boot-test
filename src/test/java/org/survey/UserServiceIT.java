@@ -49,8 +49,8 @@ public class UserServiceIT extends AbstractIntegrationTestBase{
 
     @Test
     public void getUserRest() throws JsonParseException, JsonMappingException, IOException {
-        User user = testRestTemplate.getForObject(url + "/api/rest/users?username=admin1", User.class);
-        assertEquals("admin1", user.getUsername());
+        User user = testRestTemplate.getForObject(url + "/api/rest/users?username=admin", User.class);
+        assertEquals("admin", user.getUsername());
     }
 
     @Test
