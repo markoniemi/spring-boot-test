@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public abstract class AbstractPage {
-    protected static final int SLEEP_TIME = 100;
+    protected static final int SLEEP_TIME = 500;
     protected WebDriver webDriver;
 
     public AbstractPage(WebDriver webDriver) {
@@ -23,10 +23,12 @@ public abstract class AbstractPage {
         click(By.id("menu-users"));
         assertTitle("Users");
     }
+
     public void polls() {
         click(By.id("menu-polls"));
         assertTitle("Polls");
     }
+
     public void files() {
         click(By.id("menu-files"));
         assertTitle("Files");
@@ -42,12 +44,13 @@ public abstract class AbstractPage {
     }
 
     protected void assertTitle(String title) {
-        assertEquals(webDriver.getPageSource(), title, webDriver.getTitle());
+        assertEquals(title, webDriver.getTitle(), webDriver.getPageSource());
     }
 
     protected void selectByValue(By by, String value) {
         new Select(webDriver.findElement(by)).selectByValue(value);
     }
+
     protected void sleep() {
         try {
             Thread.sleep(SLEEP_TIME);
