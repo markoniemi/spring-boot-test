@@ -14,6 +14,7 @@
     <bootstrap.version>5.0.1</bootstrap.version>
     <bootstrap-icons.version>1.5.0</bootstrap-icons.version>
     <docker.image.prefix>markoniemi</docker.image.prefix>
+    <java.version>11</java.version>
   </properties>
   <dependencies>
     <dependency>
@@ -223,8 +224,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
         </configuration>
       </plugin>
       <plugin>
@@ -250,6 +251,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring.boot.version}</version>
         <configuration>
           <mainClass>org.survey.SpringBootTestApp</mainClass>
         </configuration>
