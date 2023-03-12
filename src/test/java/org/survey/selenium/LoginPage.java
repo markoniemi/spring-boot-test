@@ -12,7 +12,6 @@ public class LoginPage extends AbstractPage {
         setText(By.id("j_username"), username);
         setText(By.id("j_password"), password);
         click(By.id("loginButton"));
-        sleep();
         assertTitle("Users");
     }
 }

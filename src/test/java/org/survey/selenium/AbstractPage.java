@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public abstract class AbstractPage {
-    protected static final int SLEEP_TIME = 500;
     protected WebDriver webDriver;
 
     public AbstractPage(WebDriver webDriver) {
@@ -49,13 +48,5 @@ public abstract class AbstractPage {
 
     protected void selectByValue(By by, String value) {
         new Select(webDriver.findElement(by)).selectByValue(value);
-    }
-
-    protected void sleep() {
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

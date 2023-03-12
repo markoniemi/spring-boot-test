@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.Collections;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -39,14 +38,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @ActiveProfiles(profiles = { "h2" })
 @ImportAutoConfiguration({ FeignAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class})
-public class AbstractIntegrationTestBase {
+public abstract class AbstractIntegrationTestBase {
     @Autowired
     protected Environment environment;
-
-    @Test
-    public void dummy() {
-        assertTrue(true);
-    }
 
     protected String get(String url, MediaType mediaType) {
         HttpHeaders headers = new HttpHeaders();
