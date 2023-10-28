@@ -8,7 +8,7 @@
   </head>
   <body>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <div th:replace="common/menu.html"></div>
+    <div th:replace="~{common/menu.html}"></div>
 
     <form class="col-8 mt-5 form-group" action="#" th:action="@{/user/save}" th:object="${user}" method="post">
       <input name="id" type="hidden" th:field="*{id}" />

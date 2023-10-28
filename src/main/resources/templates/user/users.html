@@ -10,7 +10,7 @@
   <body>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <div class="content">
-      <div th:replace="common/menu.html"></div>
+      <div th:replace="~{common/menu.html}"></div>
 
       <table class="table table-striped">
         <thead>
@@ -43,6 +43,6 @@
         <input id="addUser" class="btn btn-primary" type="submit" th:value="#{addUser}" />
       </form>
     </div>
-    <div th:replace="common/footer.html"></div>
+    <div th:replace="~{common/footer.html}"></div>
   </body>
 </html>
