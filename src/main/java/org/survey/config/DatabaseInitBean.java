@@ -1,14 +1,12 @@
 package org.survey.config;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
-
+import jakarta.annotation.Resource;
 import lombok.extern.log4j.Log4j2;
 
 @Component

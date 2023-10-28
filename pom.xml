@@ -8,13 +8,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <http.port>8082</http.port>
     <http.protocol>http</http.protocol>
-    <spring-cloud.version>2021.0.5</spring-cloud.version>
-    <spring.boot.version>2.7.5</spring.boot.version>
+    <spring-cloud.version>2022.0.4</spring-cloud.version>
+    <spring.boot.version>3.1.0</spring.boot.version>
+    <cxf.version>4.0.3</cxf.version>
     <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
     <bootstrap.version>5.0.1</bootstrap.version>
     <bootstrap-icons.version>1.5.0</bootstrap-icons.version>
     <docker.image.prefix>markoniemi</docker.image.prefix>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <dependency>
@@ -23,17 +24,9 @@
       <exclusions>
         <exclusion>
           <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jetty</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -72,7 +65,7 @@
 	<dependency>
 	    <groupId>org.apache.cxf</groupId>
 	    <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
-	    <version>3.6.2</version>
+	    <version>${cxf.version}</version>
 	</dependency>
     <!-- Bootstrap -->
     <dependency>

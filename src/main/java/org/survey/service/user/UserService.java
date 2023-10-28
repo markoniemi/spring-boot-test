@@ -1,9 +1,8 @@
 package org.survey.service.user;
 
-import javax.jws.WebService;
-
 import org.springframework.web.bind.annotation.RestController;
 import org.survey.model.user.User;
+import jakarta.jws.WebService;
 
 @RestController
 @WebService

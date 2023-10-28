@@ -1,7 +1,5 @@
 package org.survey;
 
-import javax.annotation.Resource;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,7 @@ import org.survey.selenium.LoginPage;
 import org.survey.selenium.UserPage;
 import org.survey.selenium.UsersPage;
 import org.survey.service.user.UserService;
+import jakarta.annotation.Resource;
 
 public class SpringBootWebIT extends AbstractIntegrationTestBase{
     @Resource

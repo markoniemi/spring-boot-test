@@ -1,7 +1,5 @@
 package org.survey.service.user;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.lang3.Validate;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
-
+import jakarta.annotation.Resource;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

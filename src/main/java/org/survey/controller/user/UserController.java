@@ -2,9 +2,6 @@ package org.survey.controller.user;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -21,7 +18,7 @@ import org.survey.controller.UserValidator;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.service.user.UserService;
-
+import jakarta.annotation.Resource;
 import lombok.extern.log4j.Log4j2;
 
 @Controller

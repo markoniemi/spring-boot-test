@@ -1,14 +1,12 @@
 package org.survey.service.user;
 
-import javax.annotation.Resource;
-import javax.jws.WebService;
-
 import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Component;
 import org.survey.model.user.User;
 import org.survey.repository.user.UserRepository;
-
+import jakarta.annotation.Resource;
+import jakarta.jws.WebService;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

@@ -1,8 +1,7 @@
 package org.survey.config;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class RequestLoggingFilter extends CommonsRequestLoggingFilter {
     public RequestLoggingFilter() {
