@@ -3,9 +3,9 @@ jobs:
   build:
     working_directory: ~/spring-boot-test
     docker:
-      - image: markhobson/maven-chrome:jdk-11
+      - image: markhobson/maven-chrome:jdk-17
     environment:
-      MAVEN_OPTS: -Xmx3200m
+      MAVEN_OPTS: -Xmx3200m -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
     steps:
       - checkout
       - restore_cache:
