@@ -1,47 +1,26 @@
 package org.survey.config;
 
-import javax.annotation.Resource;
-import javax.servlet.Servlet;
-
-import org.jvnet.jax_ws_commons.spring.SpringService;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import javax.xml.ws.Endpoint;
+import org.apache.cxf.Bus;
+import org.apache.cxf.jaxws.EndpointImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import org.survey.service.user.UserService;
-
-import com.sun.xml.ws.transport.http.servlet.SpringBinding;
-import com.sun.xml.ws.transport.http.servlet.WSSpringServlet;
 
 @Configuration
 @ComponentScan(basePackages = "org.survey")
 public class WebServiceConfig {
-    @Resource
+    @Autowired
     UserService userService;
-
+    @Autowired
+    private Bus bus;
+ 
     @Bean
-    public Servlet jaxwsServlet() {
-        return new WSSpringServlet();
+    public Endpoint endpoint() {
+        Endpoint endpoint = new EndpointImpl(bus, userService);
+        endpoint.publish("/users");
+        return endpoint;
     }
-
-    @Bean
-    public ServletRegistrationBean<Servlet> servletRegistrationBean() {
-        return new ServletRegistrationBean<Servlet>(jaxwsServlet(), "/api/soap/*");
-    }
-
-    @Bean()
-    public SpringBinding springBinding() throws Exception {
-        SpringService service = new SpringService();
-        service.setBean(userService);
-        SpringBinding binding = new SpringBinding();
-        binding.setService(service.getObject());
-        binding.setUrl("/api/soap/users");
-        return binding;
-    }
-
-    @Bean
-    public CommonsRequestLoggingFilter requestLoggingFilter() {
-        return new RequestLoggingFilter();
-    }
-}
+}    

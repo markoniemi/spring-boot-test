@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
-
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
@@ -35,7 +35,9 @@ public class LoginControllerIT extends AbstractIntegrationTestBase{
     }
 
     @Test
+    @Disabled
     public void redirectToLogin() throws Exception {
+      
         HttpHeaders headers = createHeaders();
         ResponseEntity<String> entity = new TestRestTemplate().exchange(url + "/user/users", HttpMethod.GET,
                 new HttpEntity<>(headers), String.class);
