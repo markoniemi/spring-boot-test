@@ -6,20 +6,10 @@ pool:
 
 variables:
 - group: tokens
-- name: MAVEN_CACHE_FOLDER
-  value: $(Pipeline.Workspace)/.m2/repository
 - name: MAVEN_OPTS
-  value: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER) -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
+  value: '-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
   
 steps:
-- task: Cache@2
-  inputs:
-    key: 'maven | "$(Agent.OS)" | **/pom.xml'
-    restoreKeys: |
-      maven | "$(Agent.OS)"
-      maven
-    path: $(MAVEN_CACHE_FOLDER)
-  displayName: Cache Maven local repo
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
