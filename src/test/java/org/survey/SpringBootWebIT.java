@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Value;
 import org.survey.model.user.Role;
 import org.survey.model.user.User;
 import org.survey.selenium.LoginPage;
@@ -15,7 +16,7 @@ import jakarta.annotation.Resource;
 public class SpringBootWebIT extends AbstractIntegrationTestBase{
     @Resource
     protected UserService userService;
-    @Resource(name = "loginUrl")
+    @Value("${loginUrl:http://localhost:8082}")
     private String loginUrl;
     @Resource
     protected WebDriver webDriver;

@@ -14,6 +14,7 @@
     <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
     <bootstrap.version>5.0.1</bootstrap.version>
     <bootstrap-icons.version>1.5.0</bootstrap-icons.version>
+    <webdrivermanager.version>5.5.3</webdrivermanager.version>
     <docker.image.prefix>markoniemi</docker.image.prefix>
     <java.version>17</java.version>
   </properties>
@@ -67,6 +68,10 @@
 	    <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
 	    <version>${cxf.version}</version>
 	</dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
     <!-- Bootstrap -->
     <dependency>
       <groupId>org.webjars</groupId>
@@ -125,7 +130,6 @@
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.5.3</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -134,11 +138,17 @@
         </exclusion>
       </exclusions>
     </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-            <scope>test</scope>
-        </dependency>    
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-devtools-v119</artifactId>
+      <version>4.16.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <scope>test</scope>
+    </dependency>    
   </dependencies>
   <dependencyManagement>
     <dependencies>
@@ -162,7 +172,18 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-    </dependencies>
+        <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${webdrivermanager.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+  </dependencies>
   </dependencyManagement>
   <build>
     <defaultGoal>install</defaultGoal>
