@@ -19,9 +19,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
- * User entity. JPA annotations are used to make this an entity. Lombok
- * annotations are used to reduce code. Named queries are provided for
- * UserRepository. Table name is users because user is a reserved word in sql.
+ * User entity. JPA annotations are used to make this an entity. Lombok annotations are used to
+ * reduce code. Named queries are provided for UserRepository. Table name is users because user is a
+ * reserved word in sql.
  */
 @Data
 @NoArgsConstructor
@@ -34,16 +34,16 @@ import lombok.ToString;
 @XmlAccessorType(XmlAccessType.FIELD)
 @SuppressWarnings("PMD.UnusedPrivateField")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NonNull
-    private String username;
-    @NonNull
-    private String password;
-    @NonNull
-    private String email;
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    private Role role;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  @NonNull
+  private String username;
+  @NonNull
+  private String password;
+  @NonNull
+  private String email;
+  @NonNull
+  @Enumerated(EnumType.STRING)
+  private Role role;
 }

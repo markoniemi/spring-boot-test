@@ -9,14 +9,14 @@ import jakarta.annotation.Resource;
 
 @Controller
 public class UsersController {
-    @Resource
-    private UserService userService;
+  @Resource
+  private UserService userService;
 
-    @RequestMapping(value = "/user/users", method = RequestMethod.GET)
-    public ModelAndView users() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("/user/users");
-        model.addObject("users", userService.findAll());
-        return model;
-    }
+  @RequestMapping(value = "/user/users", method = RequestMethod.GET)
+  public ModelAndView users() {
+    ModelAndView model = new ModelAndView();
+    model.setViewName("/user/users");
+    model.addObject("users", userService.findAll());
+    return model;
+  }
 }

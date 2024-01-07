@@ -20,62 +20,62 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @RequestMapping("/api/rest/users")
 public class UserRestController {
-    @Resource
-    private UserRepository userRepository;
+  @Resource
+  private UserRepository userRepository;
 
-    @GetMapping
-    public User[] findAll() {
-        return IterableUtils.toList(userRepository.findAll()).toArray(new User[0]);
-    }
+  @GetMapping
+  public User[] findAll() {
+    return IterableUtils.toList(userRepository.findAll()).toArray(new User[0]);
+  }
 
-    @PostMapping
-    public User create(@RequestBody User user) {
-        log.trace("create: {}", user);
-        return userRepository.save(user);
-    }
+  @PostMapping
+  public User create(@RequestBody User user) {
+    log.trace("create: {}", user);
+    return userRepository.save(user);
+  }
 
-    @PutMapping
-    public User update(@RequestBody User user) {
-        User databaseUser = userRepository.findByUsername(user.getUsername());
-        Validate.notNull(databaseUser, "User does not exist.");
-        databaseUser.setEmail(user.getEmail());
-        databaseUser.setPassword(user.getPassword());
-        databaseUser.setRole(user.getRole());
-        databaseUser.setUsername(user.getUsername());
-        log.trace("update: {}", databaseUser);
-        return userRepository.save(databaseUser);
-    }
+  @PutMapping
+  public User update(@RequestBody User user) {
+    User databaseUser = userRepository.findByUsername(user.getUsername());
+    Validate.notNull(databaseUser, "User does not exist.");
+    databaseUser.setEmail(user.getEmail());
+    databaseUser.setPassword(user.getPassword());
+    databaseUser.setRole(user.getRole());
+    databaseUser.setUsername(user.getUsername());
+    log.trace("update: {}", databaseUser);
+    return userRepository.save(databaseUser);
+  }
 
-    @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        if (userRepository.existsById(id)) {
-            userRepository.deleteById(id);
-        }
-        log.trace("delete: {}", id);
+  @DeleteMapping(value = "/{id}")
+  public void delete(@PathVariable("id") Long id) {
+    if (userRepository.existsById(id)) {
+      userRepository.deleteById(id);
     }
+    log.trace("delete: {}", id);
+  }
 
-    @GetMapping(value = "/{id}")
-    public User findById(@PathVariable("id") Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
+  @GetMapping(value = "/{id}")
+  public User findById(@PathVariable("id") Long id) {
+    return userRepository.findById(id).orElse(null);
+  }
 
-    @GetMapping( params = "username")
-    public User findByUsername(@RequestParam String username) {
-        return userRepository.findByUsername(username);
-    }
+  @GetMapping(params = "username")
+  public User findByUsername(@RequestParam String username) {
+    return userRepository.findByUsername(username);
+  }
 
-    @GetMapping( params = "email")
-    public User findByEmail(@RequestParam String email) {
-        return userRepository.findByEmail(email);
-    }
+  @GetMapping(params = "email")
+  public User findByEmail(@RequestParam String email) {
+    return userRepository.findByEmail(email);
+  }
 
-    @GetMapping(value = "/exists/{id}")
-    public boolean exists(@PathVariable("id") Long id) {
-        return userRepository.existsById(id);
-    }
+  @GetMapping(value = "/exists/{id}")
+  public boolean exists(@PathVariable("id") Long id) {
+    return userRepository.existsById(id);
+  }
 
-    @GetMapping(value = "/count")
-    public long count() {
-        return userRepository.count();
-    }
+  @GetMapping(value = "/count")
+  public long count() {
+    return userRepository.count();
+  }
 }

@@ -10,16 +10,16 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Component
 public class UserValidator implements Validator {
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return User.class.equals(clazz);
-    }
+  @Override
+  public boolean supports(Class<?> clazz) {
+    return User.class.equals(clazz);
+  }
 
-    @Override
-    public void validate(Object object, Errors errors) {
-        log.info("validate");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "invalid");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "invalid");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "invalid");
-    }
+  @Override
+  public void validate(Object object, Errors errors) {
+    log.info("validate");
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "invalid");
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "invalid");
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "invalid");
+  }
 }

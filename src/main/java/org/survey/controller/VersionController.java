@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @ControllerAdvice
 public class VersionController {
-    @Value("${app.version:empty}")
-    private String applicationVersion;
+  @Value("${app.version:empty}")
+  private String applicationVersion;
 
-    @ModelAttribute("applicationVersion")
-    public String getApplicationVersion() {
-        return applicationVersion;
-    }
+  @ModelAttribute("applicationVersion")
+  public String getApplicationVersion() {
+    return applicationVersion;
+  }
 }

@@ -7,7 +7,7 @@ import org.survey.config.ApplicationConfig;
 
 @SpringBootApplication
 public class SpringBootTestApp extends SpringBootServletInitializer {
-    public static void main(String[] args) {
-        SpringApplication.run(ApplicationConfig.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ApplicationConfig.class, args);
+  }
 }

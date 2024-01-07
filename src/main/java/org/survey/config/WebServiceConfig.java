@@ -12,15 +12,15 @@ import jakarta.xml.ws.Endpoint;
 @Configuration
 @ComponentScan(basePackages = "org.survey")
 public class WebServiceConfig {
-    @Autowired
-    UserService userService;
-    @Autowired
-    private Bus bus;
- 
-    @Bean
-    public Endpoint endpoint() {
-        Endpoint endpoint = new EndpointImpl(bus, userService);
-        endpoint.publish("/users");
-        return endpoint;
-    }
-}    
+  @Autowired
+  UserService userService;
+  @Autowired
+  private Bus bus;
+
+  @Bean
+  public Endpoint endpoint() {
+    Endpoint endpoint = new EndpointImpl(bus, userService);
+    endpoint.publish("/users");
+    return endpoint;
+  }
+}

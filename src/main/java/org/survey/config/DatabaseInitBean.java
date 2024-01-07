@@ -12,14 +12,14 @@ import lombok.extern.log4j.Log4j2;
 @Component
 @Log4j2
 public class DatabaseInitBean implements InitializingBean {
-    @Resource
-    private UserRepository userRepository;
-    @Value("${initial.username:admin}")
-    private String username;
+  @Resource
+  private UserRepository userRepository;
+  @Value("${initial.username:admin}")
+  private String username;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        log.debug("Creating user {}", username);
-        userRepository.save(new User(username, "admin", "email", Role.ROLE_ADMIN));
-    }
+  @Override
+  public void afterPropertiesSet() throws Exception {
+    log.debug("Creating user {}", username);
+    userRepository.save(new User(username, "admin", "email", Role.ROLE_ADMIN));
+  }
 }
