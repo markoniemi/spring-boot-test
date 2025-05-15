@@ -14,7 +14,7 @@
     <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
     <bootstrap.version>5.0.1</bootstrap.version>
     <bootstrap-icons.version>1.5.0</bootstrap-icons.version>
-    <webdrivermanager.version>5.5.3</webdrivermanager.version>
+    <webdrivermanager.version>6.1.0</webdrivermanager.version>
     <docker.image.prefix>markoniemi</docker.image.prefix>
     <java.version>17</java.version>
   </properties>
